@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @story.name %>
+</p>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @story.users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+      </tr>
+  <% end %>
+  </tbody>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+<% User.all.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td>
+        <%= button_to "Add to story", {controller: "stories", action: "add_to_story", params: {user_id: user.id, story_id: @story.id} } %>
+      </td>
+    </tr>
+<% end %>
+</tbody>
+
+
+<%= link_to 'Edit', edit_story_path(@story) %> |
+<%= link_to 'Back', stories_path %>

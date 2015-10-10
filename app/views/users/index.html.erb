@@ -1,0 +1,52 @@
+<div class="row">
+  <!-- Not implemented on tutorial -->
+  <div class="col-md-4">
+    <div style="height: 300px; overflow-y: auto;">
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Registered Users</div>
+
+        <!-- Table -->
+        <table class="table">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @users.each do |user| %>
+              <tr>
+                <td><%= user.email %></td>
+                <td>
+                </td>
+              </tr>
+          <% end %>
+          <% Story.all.each do |story| %>
+              <tr>
+                <td><%= story.name %></td>
+                <td>
+                  <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
+                              "data-sid" => current_user.id, "data-storyip" => story.id %>
+                </td>
+              </tr>
+          <% end %>
+
+
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <hr>
+
+    <%= link_to "Show all stories", stories_url %>
+  </div>
+
+
+  <div class="col-md-4">
+
+  </div>
+
+</div>
