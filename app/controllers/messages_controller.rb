@@ -4,7 +4,11 @@ class MessagesController < ApplicationController
   def create
     @conversation = Conversation.find(params[:conversation_id])
     @message = @conversation.messages.build(message_params)
+<<<<<<< HEAD
     @message.story_id = Story.new
+=======
+    @message.user_id = current_user.id
+>>>>>>> 8ed8e3a81bfa99cbdaac9226eacdf945b3e15ca4
     @message.save!
 
     @path = conversation_path(@conversation)
